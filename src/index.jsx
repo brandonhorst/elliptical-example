@@ -15,9 +15,9 @@ const countryData = [
 const Country = {
   describe () {
     return (
-      <label text='Country'>
+      <placeholder argument='Country'>
         <list items={countryData} strategy='fuzzy' />
-      </label>
+      </placeholder>
     )
   }
 }
@@ -44,48 +44,50 @@ const outputs = parse('flights to irela')
 console.log(inspect(outputs, {depth: 10}))
 
 /*
-  [{ // direct match
-    words: [
-      {text: 'flights', input: true},
-      {text: ' to ', input: true},
-      {text: 'Irela', input: true, argument: 'Country'},
-      {text: 'nd', input: false, argument: 'Country'}
-    ]},
-    results: {
-      direction: 'to',
-      country: 'IE'
-    },
-    score: 1
-  }, { // mid-string match
-    words: [
-      {text: 'flights', input: true},
-      {text: ' to ', input: true},
-      {text: 'United Kingdom of Great Britain and Northern ', input: false, argument: 'Country'},
-      {text: 'Ireland', input: true, argument: 'Country'}
-    ]},
-    results: {
-      direction: 'to',
-      country: 'GB'
-    },
-    score: 0.5673076923076923
-  }, { // fuzzy match
-    words: [
-      {text: 'flights', input: true},
-      {text: ' to ', input: true},
-      {text: 'Macedon', input: false, argument: 'Country'},
-      {text: 'i', input: true, argument: 'Country'},
-      {text: 'a (the fo', input: false, argument: 'Country'},
-      {text: 'r', input: true, argument: 'Country'},
-      {text: 'm', input: false, argument: 'Country'},
-      {text: 'e', input: true, argument: 'Country'},
-      {text: 'r Yugos', input: false, argument: 'Country'},
-      {text: 'la', input: true, argument: 'Country'},
-      {text: 'v Republic of)', input: false, argument: 'Country'}
-    ]},
-    results: {
-      direction: 'to',
-      country: 'MK'
-    },
-    score: 0.024999999999999998
-  }]
+[ { text: null,
+    words:
+     [ { text: 'flights ', input: true },
+       { text: 'to ', input: true },
+       { text: 'Irela', input: true },
+       { text: 'nd', input: false } ],
+    qualifiers: [],
+    annotations: [],
+    categories: [],
+    arguments: [ { value: 'Country', start: 2, end: 4 } ],
+    score: 1,
+    result: { direction: 'to', country: 'IE' } },
+  { text: null,
+    words:
+     [ { text: 'flights ', input: true },
+       { text: 'to ', input: true },
+       { text: 'United Kingdom of Great Britain and Northern ',
+         input: false },
+       { text: 'Irela', input: true },
+       { text: 'nd', input: false } ],
+    qualifiers: [],
+    annotations: [],
+    categories: [],
+    arguments: [ { value: 'Country', start: 2, end: 5 } ],
+    score: 0.5673076923076923,
+    result: { direction: 'to', country: 'IE' } },
+  { text: null,
+    words:
+     [ { text: 'flights ', input: true },
+       { text: 'to ', input: true },
+       { text: 'Macedon', input: false },
+       { text: 'i', input: true },
+       { text: 'a (the fo', input: false },
+       { text: 'r', input: true },
+       { text: 'm', input: false },
+       { text: 'e', input: true },
+       { text: 'r Yugos', input: false },
+       { text: 'l', input: true },
+       { text: 'a', input: true },
+       { text: 'v Republic of)', input: false } ],
+    qualifiers: [],
+    annotations: [],
+    categories: [],
+    arguments: [ { value: 'Country', start: 2, end: 12 } ],
+    score: 0.024999999999999998,
+    result: { direction: 'to', country: 'MK' } } ]
 */
